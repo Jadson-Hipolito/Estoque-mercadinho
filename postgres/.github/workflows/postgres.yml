@@ -1,0 +1,22 @@
+name: PostgreSQL Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-db:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: senha
+          POSTGRES_DB: estoque_mercadinho
+        ports:
+          - 5432:5432
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
