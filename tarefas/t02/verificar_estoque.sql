@@ -1,9 +1,16 @@
-CREATE FUNCTION verificar_estoque_produto(produto_id INT) RETURNS INT AS $$
+CREATE FUNCTION verificar_estoque(produto_id INT) 
+RETURNS INT 
+LANGUAGE plpgsql
+AS $$
 DECLARE quantidade INT;
 BEGIN
     SELECT quantidade INTO quantidade
-    FROM Produtos
-    WHERE id = produto_id;
+    FROM produtos  
+    WHERE produto_id = verificar_estoque_produto.produto_id; 
+    IF NOT FOUND THEN
+        quantidade := 0;
+    END IF;
+
     RETURN quantidade;
 END;
-$$ LANGUAGE plpgsql;
+$$;

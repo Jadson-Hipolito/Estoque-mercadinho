@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de Banco de Dados</title>
+    <script>
+        function atualizarPreco() {
+            fetch("/atualizar_preco", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ produto_id: 1, novo_preco: 99.99 })
+            })
+            .then(response => response.json())
+            .then(data => alert(data.mensagem));
+        }
+
+        function listarProjetos() {
+            fetch("/listar_projetos")
+            .then(response => response.json())
+            .then(data => {
+                let lista = document.getElementById("projetos");
+                lista.innerHTML = "";
+                data.forEach(projeto => {
+                    lista.innerHTML += `<li>${projeto.nome}</li>`;
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Banco de Dados - Administração</h1>
+    <button onclick="atualizarPreco()">Atualizar Preço</button>
+    <button onclick="listarProjetos()">Listar Projetos</button>
+
+    <h2>Projetos:</h2>
+    <ul id="projetos"></ul>
+</body>
+</html>

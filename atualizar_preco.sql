@@ -1,4 +1,7 @@
-CREATE PROCEDURE atualizar_preco_produto(produto_id INT, novo_preco DECIMAL)
+CREATE FUNCTION atualizar_preco_produto(
+    produto_id INT,
+    novo_preco NUMERIC(10,2)
+) RETURNS VOID 
 LANGUAGE plpgsql
 AS $$
 BEGIN
