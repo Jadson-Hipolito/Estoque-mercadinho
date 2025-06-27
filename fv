@@ -1,0 +1,17 @@
+                                       Table "public.produtos"
+    Column     |          Type          | Collation | Nullable |               Default                
+---------------+------------------------+-----------+----------+--------------------------------------
+ id            | integer                |           | not null | nextval('produtos_id_seq'::regclass)
+ nome          | character varying(100) |           | not null | 
+ categoria     | character varying(50)  |           |          | 
+ preco         | numeric(10,2)          |           | not null | 
+ quantidade    | integer                |           | not null | 
+ fornecedor_id | integer                |           |          | 
+Indexes:
+    "produtos_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "produtos_fornecedor_id_fkey" FOREIGN KEY (fornecedor_id) REFERENCES fornecedores(id)
+Referenced by:
+    TABLE "movimentacoes_estoque" CONSTRAINT "movimentacoes_estoque_produto_id_fkey" FOREIGN KEY (produto_id) REFERENCES produtos(id)
+    TABLE "vendas" CONSTRAINT "vendas_produto_id_fkey" FOREIGN KEY (produto_id) REFERENCES produtos(id)
+

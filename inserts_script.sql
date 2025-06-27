@@ -1,4 +1,4 @@
-USE estoque_mercadinho;
+\c estoque_mercadinho
 
 -- Inserindo dados na tabela de Fornecedores
 INSERT INTO Fornecedores (nome, contato, historico) VALUES
