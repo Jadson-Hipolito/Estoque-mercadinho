@@ -1,45 +1,48 @@
 \c estoque_mercadinho
 
--- Inserindo dados na tabela de Fornecedores
-INSERT INTO Fornecedores (nome, contato, historico) VALUES
-('Fornecedor A', 'email@a.com', 'Enviou 3 pedidos'),
-('Fornecedor B', 'email@b.com', 'Enviou 2 pedidos'),
-('Fornecedor C', 'email@c.com', 'Enviou 5 pedidos'),
-('Fornecedor D', 'email@d.com', 'Enviou 1 pedido'),
-('Fornecedor E', 'email@e.com', 'Enviou 4 pedidos'),
-('Fornecedor F', 'email@f.com', 'Enviou 2 pedidos'),
-('Fornecedor G', 'email@g.com', 'Enviou 6 pedidos'),
-('Fornecedor H', 'email@h.com', 'Enviou 1 pedido'),
-('Fornecedor I', 'email@i.com', 'Enviou 3 pedidos'),
-('Fornecedor J', 'email@j.com', 'Enviou 4 pedidos');
+-- Conecte-se ao banco:
+-- \c estoque_mercadinho
 
--- Inserindo dados na tabela de Produtos
-INSERT INTO Produtos (nome, categoria, preco, quantidade, fornecedor_id) VALUES
-('Arroz', 'Alimentos', 25.00, 100, 1),
-('Feijão', 'Alimentos', 10.00, 80, 2),
-('Óleo de Soja', 'Alimentos', 8.00, 50, 3),
-('Açúcar', 'Alimentos', 7.00, 60, 4),
-('Farinha de Trigo', 'Alimentos', 12.00, 90, 5),
-('Sal', 'Condimentos', 3.00, 200, 6),
-('Macarrão', 'Massas', 15.00, 40, 7),
-('Molho de Tomate', 'Condimentos', 5.00, 75, 8),
-('Café', 'Bebidas', 20.00, 110, 9),
-('Leite', 'Bebidas', 7.50, 130, 10);
+-- 1️⃣ Fornecedores
+INSERT INTO Fornecedores (id, nome, contato, historico) VALUES
+(1, 'Fornecedor A', 'email@a.com', 'Enviou 3 pedidos'),
+(2, 'Fornecedor B', 'email@b.com', 'Enviou 2 pedidos'),
+(3, 'Fornecedor C', 'email@c.com', 'Enviou 5 pedidos'),
+(4, 'Fornecedor D', 'email@d.com', 'Enviou 1 pedido'),
+(5, 'Fornecedor E', 'email@e.com', 'Enviou 4 pedidos'),
+(6, 'Fornecedor F', 'email@f.com', 'Enviou 2 pedidos'),
+(7, 'Fornecedor G', 'email@g.com', 'Enviou 6 pedidos'),
+(8, 'Fornecedor H', 'email@h.com', 'Enviou 1 pedido'),
+(9, 'Fornecedor I', 'email@i.com', 'Enviou 3 pedidos'),
+(10, 'Fornecedor J', 'email@j.com', 'Enviou 4 pedidos');
 
--- Inserindo dados na tabela de Movimentações de Estoque
-INSERT INTO Movimentacoes_Estoque (tipo, quantidade, produto_id) VALUES
-('entrada', 50, 1),
-('entrada', 30, 2),
-('saida', 10, 3),
-('entrada', 20, 4),
-('saida', 5, 5),
-('entrada', 15, 6),
-('saida', 7, 7),
-('entrada', 25, 8),
-('saida', 12, 9),
-('entrada', 40, 10);
+-- 2️⃣ Produtos
+INSERT INTO Produtos (id, nome, categoria, preco, quantidade, fornecedor_id) VALUES
+(1, 'Arroz', 'Alimentos', 25.00, 100, 1),
+(2, 'Feijão', 'Alimentos', 10.00, 80, 2),
+(3, 'Óleo de Soja', 'Alimentos', 8.00, 50, 3),
+(4, 'Açúcar', 'Alimentos', 7.00, 60, 4),
+(5, 'Farinha de Trigo', 'Alimentos', 12.00, 90, 5),
+(6, 'Sal', 'Condimentos', 3.00, 200, 6),
+(7, 'Macarrão', 'Massas', 15.00, 40, 7),
+(8, 'Molho de Tomate', 'Condimentos', 5.00, 75, 8),
+(9, 'Café', 'Bebidas', 20.00, 110, 9),
+(10, 'Leite', 'Bebidas', 7.50, 130, 10);
 
--- Inserindo dados na tabela de Vendas
+-- 3️⃣ Movimentações de Estoque (com descrições)
+INSERT INTO Movimentacoes_Estoque (tipo, quantidade, produto_id, descricao) VALUES
+('entrada', 50, 1, 'Compra inicial'),
+('entrada', 30, 2, 'Compra inicial'),
+('saida', 10, 3, 'Venda'),
+('entrada', 20, 4, 'Reposição'),
+('saida', 5, 5, 'Venda'),
+('entrada', 15, 6, 'Nova remessa'),
+('saida', 7, 7, 'Saída por venda direta'),
+('entrada', 25, 8, 'Remessa recebida'),
+('saida', 12, 9, 'Venda promocional'),
+('entrada', 40, 10, 'Compra mensal');
+
+-- 4️⃣ Vendas (batem com produtos cadastrados)
 INSERT INTO Vendas (produto_id, quantidade, valor_total) VALUES
 (1, 5, 125.00),
 (2, 3, 30.00),

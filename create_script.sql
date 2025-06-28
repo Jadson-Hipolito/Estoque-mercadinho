@@ -25,10 +25,10 @@ CREATE TABLE Produtos (
 
 -- Tabela de Movimentações de Estoque
 CREATE TABLE Movimentacoes_Estoque (
-    id SERIAL PRIMARY KEY,
-    tipo VARCHAR(10) CHECK (tipo IN ('entrada', 'saida')) NOT NULL,
+    tipo VARCHAR(10) NOT NULL CHECK (tipo IN ('entrada', 'saida')),
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    quantidade INT NOT NULL,
+    quantidade INT NOT NULL CHECK (quantidade > 0),
+    descricao TEXT NOT NULL,
     produto_id INT NOT NULL,
     FOREIGN KEY (produto_id) REFERENCES Produtos(id)
 );

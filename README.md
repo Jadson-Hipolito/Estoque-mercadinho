@@ -43,6 +43,7 @@ SELECT * FROM Produtos_Estoque_Baixo;
 SELECT * FROM movimentacao_recente();
 SELECT * FROM vendas();
 SELECT atualizar_preco_produto(id, preco);
+SELECT inserir_venda_auto(id, quantidade);
 
 adicionar varios itens nas tabelas
 \i /mnt/c/Users/jadso/OneDrive/Documentos/github/Estoque-mercadinho/inserts_script.sql
