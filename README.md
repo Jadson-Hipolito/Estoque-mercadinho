@@ -35,24 +35,34 @@ As tabelas principais incluem:
 As funções `plpgsql` facilitam a consulta dos dados:
 
 ```sql
-SELECT * FROM listar_fornecedores();
-SELECT * FROM listar_produtos();
-SELECT * FROM listar_movimentacoes();
-SELECT * FROM listar_vendas();
-SELECT * FROM Produtos_Estoque_Baixo;
-SELECT * FROM movimentacao_recente();
-SELECT * FROM vendas();
-SELECT atualizar_preco_produto(id, preco);
-SELECT inserir_venda_auto(id, quantidade);
-SELECT excluir_produto(id);
--- Vendas feitas entre 1º e 15 de junho de 2025 (exemplo de como se pede)
-SELECT * FROM listar_vendas_por_periodo('2025-06-01', '2025-06-15');
 
--- Movimentações registradas entre 10 e 28 de junho (exemplo de como se pede)
+SELECT * FROM listar_fornecedores(); -- Lista todos os fornecedores cadastrados
+SELECT * FROM listar_produtos(); -- Lista todos os produtos com detalhes completos
+SELECT * FROM listar_produtos_categoria(categoria); -- Lista produtos por categoria
+SELECT * FROM listar_produtos_fornecedor(id); -- Lista produtos de um fornecedor específico
+SELECT * FROM listar_movimentacoes(); -- Lista todas as movimentações registradas
+SELECT * FROM listar_vendas(); -- Lista todas as vendas registradas
+SELECT * FROM Produtos_Estoque_Baixo; -- Lista produtos com estoque abaixo do mínimo (view ou função específica)
+SELECT * FROM movimentacao_recente(); -- Lista as movimentações mais recentes (últimas entradas/saídas)
+
+SELECT atualizar_preco_produto(produto_id, novo_preco); -- Atualiza o preço de um produto específico
+SELECT atualizar_fornecedor(p_produto_id, p_novo_fornecedor_id); --atualiza o fornecedor
+
+SELECT excluir_produto(id); -- Exclui um produto (desde que sem estoque)
+SELECT excluir_fornecedor(p_fornecedor_id); -- Exclui um fornecedor (desde que não forneca nehnum produto atualmente)
+
+-- exemplo (1 de junho a 15 de junho)
+SELECT * FROM listar_vendas_por_periodo('2025-06-01', '2025-06-15');
+-- exemplo (20 de junho a 28 de junho)
 SELECT * FROM listar_movimentacoes_por_periodo('2025-06-10', '2025-06-28');
 
-adicionar varios itens nas tabelas
+SELECT media_categoria(categoria); -- Retorna a média de preços da categoria
+
+SELECT * FROM buscar_fornecedor(p_id); --buscar fornecedor pelo id
+
+--inserir itens nas tabelas
 \i /mnt/c/Users/jadso/OneDrive/Documentos/github/Estoque-mercadinho/inserts_script.sql
+
 
 limpar tabelas
 TRUNCATE TABLE
