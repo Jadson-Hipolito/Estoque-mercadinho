@@ -29,6 +29,7 @@ As tabelas principais incluem:
 | **Vendas**             | Registra vendas realizadas e valores totais |
 
 ---
+📄 [Apresentação em PDF](./Presentation.pdf)
 
 ## 🛠️ Funções Criadas
 
