@@ -30,7 +30,7 @@ As tabelas principais incluem:
 
 ---
 
-📄 [Apresentação em PDF]([slides_apresentacao.pdf](https://github.com/Jadson-Hipolito/Estoque-mercadinho/blob/main/slides_apresentacao.pdf.pdf))
+📄 Apresentação em PDF https://github.com/Jadson-Hipolito/Estoque-mercadinho/blob/main/slides_apresentacao.pdf.pdf
 
 ## 🛠️ Funções Criadas
 
