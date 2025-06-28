@@ -45,6 +45,11 @@ SELECT * FROM vendas();
 SELECT atualizar_preco_produto(id, preco);
 SELECT inserir_venda_auto(id, quantidade);
 SELECT excluir_produto(id);
+-- Vendas feitas entre 1º e 15 de junho de 2025 (exemplo de como se pede)
+SELECT * FROM listar_vendas_por_periodo('2025-06-01', '2025-06-15');
+
+-- Movimentações registradas entre 10 e 28 de junho (exemplo de como se pede)
+SELECT * FROM listar_movimentacoes_por_periodo('2025-06-10', '2025-06-28');
 
 adicionar varios itens nas tabelas
 \i /mnt/c/Users/jadso/OneDrive/Documentos/github/Estoque-mercadinho/inserts_script.sql
