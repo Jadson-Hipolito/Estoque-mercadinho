@@ -38,10 +38,10 @@ BEGIN
     WHERE id = p_produto_id;
 
     -- Registrar movimentação de estoque com descrição “Venda realizada”
-    INSERT INTO Movimentacoes_Estoque (tipo, quantidade, produto_id)
-    VALUES ('saida', p_quantidade, p_produto_id);
+    INSERT INTO movimentacoes (tipo, quantidade, produto_id, descricao)
+    VALUES ('saida', p_quantidade, p_produto_id, 'Venda realizada');
 
     RAISE NOTICE '✅ Venda realizada: % unidades vendidas, total de R$%.', p_quantidade, v_valor_total;
-    RETURN
+    RETURN;
 END;
 $$ LANGUAGE plpgsql;

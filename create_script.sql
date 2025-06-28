@@ -24,7 +24,7 @@ CREATE TABLE Produtos (
 );
 
 -- Tabela de Movimentações de Estoque
-CREATE TABLE Movimentacoes_Estoque (
+CREATE TABLE movimentacoes (
     tipo VARCHAR(10) NOT NULL CHECK (tipo IN ('entrada', 'saida')),
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     quantidade INT NOT NULL CHECK (quantidade > 0),

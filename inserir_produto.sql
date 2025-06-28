@@ -31,11 +31,11 @@ BEGIN
         RETURN;
     END IF;
 
-    -- Insere o novo produto apenas se todos os dados foram recebidos
+    -- Insere o novo produto
     INSERT INTO Produtos (id, nome, categoria, preco, quantidade, fornecedor_id)
     VALUES (p_id, p_nome, p_categoria, p_preco, p_quantidade, p_fornecedor_id);
 
-    RAISE NOTICE '✅ Produto "%'' inserido com sucesso com ID %.', p_nome, p_id;
-    RETURN
+    RAISE NOTICE '✅ Produto "%", ID % inserido com sucesso.', p_nome, p_id;
+    RETURN;
 END;
 $$ LANGUAGE plpgsql;

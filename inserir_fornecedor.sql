@@ -14,15 +14,15 @@ BEGIN
     WHERE id = p_id;
 
     IF v_existente > 0 THEN
-        RAISE NOTICE '⚠️ Já existe um fornecedor com o ID %.', p_id;
+        RAISE NOTICE '❌ Já existe um fornecedor com o ID %.', p_id;
         RETURN;
     END IF;
 
-    -- Insere novo fornecedor com ID definido
+    -- Insere o novo fornecedor
     INSERT INTO Fornecedores (id, nome, contato, historico)
     VALUES (p_id, p_nome, p_contato, p_historico);
 
-    RAISE NOTICE '✅ Fornecedor "%'' inserido com ID %.', p_nome, p_id;
-    RETURN
+    RAISE NOTICE '✅ Fornecedor "%" inserido com ID %.', p_nome, p_id;
+    RETURN;
 END;
 $$ LANGUAGE plpgsql;
