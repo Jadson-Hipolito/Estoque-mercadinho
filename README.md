@@ -69,7 +69,7 @@ SELECT * FROM buscar_fornecedor(p_id); --buscar fornecedor pelo id
 limpar tabelas
 TRUNCATE TABLE
     Vendas,
-    Movimentacoes_Estoque,
+    movimentacoes,
     Produtos,
     Fornecedores
 RESTART IDENTITY CASCADE;
