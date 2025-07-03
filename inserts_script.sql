@@ -30,7 +30,7 @@ INSERT INTO Produtos (id, nome, categoria, preco, quantidade, fornecedor_id) VAL
 (10, 'Leite', 'Bebidas', 7.50, 130, 10);
 
 -- 3️⃣ Movimentações de Estoque (com descrições)
-INSERT INTO Movimentacoes_Estoque (tipo, quantidade, produto_id, descricao) VALUES
+INSERT INTO movimentacoes (tipo, quantidade, produto_id, descricao) VALUES
 ('entrada', 50, 1, 'Compra inicial'),
 ('entrada', 30, 2, 'Compra inicial'),
 ('saida', 10, 3, 'Venda'),

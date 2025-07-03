@@ -12,7 +12,7 @@ BEGIN
         m.tipo,
         m.data,
         m.quantidade,
-        p.nome AS produto,
+        p.nome::TEXT AS produto,
         m.descricao
     FROM movimentacoes m
     JOIN produtos p ON m.produto_id = p.id
