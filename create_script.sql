@@ -35,7 +35,6 @@ CREATE TABLE movimentacoes (
 
 -- Tabela de Vendas
 CREATE TABLE Vendas (
-    id SERIAL PRIMARY KEY,
     produto_id INT NOT NULL,
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     quantidade INT NOT NULL,

@@ -3,7 +3,7 @@ CREATE OR REPLACE FUNCTION listar_movimentacoes_periodo(
     p_data_fim DATE
 )
 RETURNS TABLE (
-    tipo TEXT,
+    tipo VARCHAR(10),
     data TIMESTAMP,
     quantidade INT,
     produto TEXT,
@@ -11,11 +11,11 @@ RETURNS TABLE (
 ) AS $$
 BEGIN
     RETURN QUERY
-    SELECT 
+    SELECT
         m.tipo,
         m.data,
         m.quantidade,
-        p.nome AS produto,
+        p.nome::TEXT AS produto,
         m.descricao
     FROM movimentacoes m
     JOIN produtos p ON m.produto_id = p.id

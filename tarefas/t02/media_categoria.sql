@@ -1,10 +1,13 @@
-CREATE FUNCTION media_categoria(categoria VARCHAR) 
-RETURNS NUMERIC(10,2) AS $$
-DECLARE media_preco NUMERIC(10,2);
+CREATE OR REPLACE FUNCTION media_categoria(p_categoria VARCHAR)
+RETURNS NUMERIC AS $$
+DECLARE
+    v_media NUMERIC;
 BEGIN
-    SELECT AVG(preco) INTO media_preco
+    SELECT AVG(preco)
+    INTO v_media
     FROM Produtos
-    WHERE categoria = categoria;
-    RETURN media_preco;
+    WHERE categoria = p_categoria;
+
+    RETURN v_media;
 END;
 $$ LANGUAGE plpgsql;

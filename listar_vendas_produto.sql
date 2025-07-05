@@ -7,11 +7,11 @@ RETURNS TABLE (
 ) AS $$
 BEGIN
     RETURN QUERY
-    SELECT 
+    SELECT
         v.data,
         v.quantidade,
         v.valor_total,
-        p.nome AS produto
+        p.nome::TEXT AS produto
     FROM vendas v
     JOIN produtos p ON v.produto_id = p.id
     WHERE v.produto_id = p_produto_id;

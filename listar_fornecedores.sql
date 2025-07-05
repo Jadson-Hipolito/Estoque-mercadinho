@@ -1,15 +1,17 @@
-CREATE FUNCTION listar_fornecedores()
+CREATE OR REPLACE FUNCTION listar_fornecedores()
 RETURNS TABLE (
-    ID INT,
-    Nome VARCHAR(100),
-    Contato VARCHAR(100),
-    Historico TEXT
-)
-LANGUAGE plpgsql
-AS $$
+    id INT,
+    nome VARCHAR,
+    contato VARCHAR,
+    historico TEXT
+) AS $$
 BEGIN
     RETURN QUERY
-    SELECT id, nome, contato, historico
-    FROM Fornecedores;
+    SELECT 
+        f.id,
+        f.nome,
+        f.contato,
+        f.historico
+    FROM Fornecedores f;
 END;
-$$;
+$$ LANGUAGE plpgsql;

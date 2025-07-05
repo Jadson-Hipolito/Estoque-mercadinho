@@ -38,29 +38,31 @@ As funções `plpgsql` facilitam a consulta dos dados:
 
 ```sql
 
-SELECT * FROM listar_fornecedores(); -- Lista todos os fornecedores cadastrados
-SELECT * FROM listar_produtos(); -- Lista todos os produtos com detalhes completos
-SELECT * FROM listar_produtos_categoria(categoria); -- Lista produtos por categoria
-SELECT * FROM listar_produtos_fornecedor(id); -- Lista produtos de um fornecedor específico
-SELECT * FROM listar_movimentacoes(); -- Lista todas as movimentações registradas
-SELECT * FROM listar_vendas(); -- Lista todas as vendas registradas
-SELECT * FROM Produtos_Estoque_Baixo; -- Lista produtos com estoque abaixo do mínimo (view ou função específica)
-SELECT * FROM movimentacao_recente(); -- Lista as movimentações mais recentes (últimas entradas/saídas)
-
 SELECT atualizar_preco_produto(produto_id, novo_preco); -- Atualiza o preço de um produto específico
 SELECT atualizar_fornecedor(p_produto_id, p_novo_fornecedor_id); --atualiza o fornecedor
+
+SELECT * FROM buscar_fornecedor(p_id); --buscar fornecedor pelo id
 
 SELECT excluir_produto(id); -- Exclui um produto (desde que sem estoque)
 SELECT excluir_fornecedor(p_fornecedor_id); -- Exclui um fornecedor (desde que não forneca nehnum produto atualmente)
 
--- exemplo (1 de junho a 15 de junho)
-SELECT * FROM listar_vendas_por_periodo('2025-06-01', '2025-06-15');
--- exemplo (20 de junho a 28 de junho)
-SELECT * FROM listar_movimentacoes_por_periodo('2025-06-10', '2025-06-28');
+SELECT inserir_fornecedor(p_id, 'p_nome', 'p_contato', 'p_historico');
+SELECT inserir_movimentacoes('entrada' ou 'saida', quantidade, produto_id, 'descricao');
+SELECT inserir_produto(p_id INT, p_nome TEXT, p_categoria TEXT, p_preco NUMERIC, p_quantidade INT, p_fornecedor_id INT);
+SELECT inserir_venda(p_produto_id INT, p_quantidade INT);
 
-SELECT media_categoria(categoria); -- Retorna a média de preços da categoria
+SELECT * FROM listar_fornecedores(); -- Lista todos os fornecedores cadastrados
+SELECT * FROM listar_produtos(); -- Lista todos os produtos com detalhes completos
+SELECT * FROM listar_produtos_categoria('categoria'); -- Lista produtos por categoria
+SELECT * FROM listar_produtos_fornecedor(id); -- Lista produtos de um fornecedor específico
+SELECT * FROM listar_movimentacoes(); -- Lista todas as movimentações registradas
+SELECT * FROM listar_movimentacoes_periodo('2025-06-10', '2025-06-28'); -- exemplo (20 de junho a 28 de junho)
+SELECT * FROM listar_vendas(); -- Lista todas as vendas registradas
+SELECT * FROM listar_vendas_por_periodo('2025-06-01', '2025-06-15'); -- exemplo (1 de junho a 15 de junho)
+SELECT * FROM listar_vendas_produto(p_produto_id); -- Lista todas as vendas registradas de um produto
+SELECT * FROM Produtos_Estoque_Baixo; -- Lista produtos com estoque abaixo do mínimo (view ou função específica)
 
-SELECT * FROM buscar_fornecedor(p_id); --buscar fornecedor pelo id
+SELECT media_categoria('categoria'); -- Retorna a média de preços da categoria
 
 --inserir itens nas tabelas
 \i /mnt/c/Users/jadso/OneDrive/Documentos/github/Estoque-mercadinho/inserts_script.sql

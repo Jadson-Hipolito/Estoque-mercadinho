@@ -1,12 +1,13 @@
-CREATE FUNCTION listar_produtos()
+CREATE OR REPLACE FUNCTION listar_produtos()
 RETURNS TABLE (
     Produto_ID INT,
     Produto VARCHAR(100),
     Categoria VARCHAR(50),
     Preco NUMERIC(10,2),
+    Quantidade INT,
     Fornecedor VARCHAR(100),
     Contato VARCHAR(100)
-)
+) 
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -16,6 +17,7 @@ BEGIN
         p.nome AS Produto,
         p.categoria,
         p.preco,
+        p.quantidade,
         f.nome AS Fornecedor,
         f.contato
     FROM Produtos p

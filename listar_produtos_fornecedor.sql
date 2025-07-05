@@ -1,21 +1,20 @@
-CREATE OR REPLACE FUNCTION listar_produtos_categoria(p_categoria TEXT)
+CREATE OR REPLACE FUNCTION listar_produtos_fornecedor(p_fornecedor_id INT)
 RETURNS TABLE (
-    produto_id INT,
-    nome TEXT,
-    preco NUMERIC,
-    quantidade INT,
-    fornecedor TEXT
+    id INT,
+    nome VARCHAR(100),
+    categoria VARCHAR(50),
+    preco NUMERIC(10,2),
+    quantidade INT
 ) AS $$
 BEGIN
     RETURN QUERY
     SELECT 
         p.id,
-        p.nome::TEXT,
+        p.nome,
+        p.categoria,
         p.preco,
-        p.quantidade,
-        f.nome::TEXT
+        p.quantidade
     FROM produtos p
-    LEFT JOIN fornecedores f ON p.fornecedor_id = f.id
-    WHERE LOWER(p.categoria) = LOWER(p_categoria);
+    WHERE p.fornecedor_id = p_fornecedor_id;
 END;
 $$ LANGUAGE plpgsql;
