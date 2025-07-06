@@ -38,8 +38,15 @@ As funções `plpgsql` facilitam a consulta dos dados:
 
 ```sql
 
-SELECT atualizar_preco_produto(produto_id, novo_preco); -- Atualiza o preço de um produto específico
+--Banco de dados
+\c estoque_mercadinho
+
+SELECT atualizar_categoria_produto(p.id, 'categoria'); --Atualiza a categoria de um produto
+SELECT atualizar_contato_fornecedor(f_id, 'Novo Contato'); --Atualizar contato do fornecedor
 SELECT atualizar_fornecedor(p_produto_id, p_novo_fornecedor_id); --atualiza o fornecedor
+SELECT atualizar_nome_fornecedor(f_id, 'Novo Nome'); --Atualizar nome do fornecedor
+SELECT atualizar_nome_produto(p_id, 'Novo Nome'); --Atualizar nome do Produto
+SELECT atualizar_preco_produto(produto_id, 'novo_preco'); -- Atualiza o preço de um produto
 
 SELECT * FROM buscar_fornecedor(p_id); --buscar fornecedor pelo id
 
