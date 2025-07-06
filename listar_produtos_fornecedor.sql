@@ -15,6 +15,7 @@ BEGIN
         p.preco,
         p.quantidade
     FROM produtos p
-    WHERE p.fornecedor_id = p_fornecedor_id;
+    WHERE p.fornecedor_id = p_fornecedor_id
+    ORDER BY p.id;
 END;
 $$ LANGUAGE plpgsql;

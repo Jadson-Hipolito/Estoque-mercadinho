@@ -19,6 +19,7 @@ BEGIN
         m.descricao
     FROM movimentacoes m
     JOIN produtos p ON m.produto_id = p.id
-    WHERE m.data::DATE BETWEEN p_data_inicio AND p_data_fim;
+    WHERE m.data::DATE BETWEEN p_data_inicio AND p_data_fim
+    ORDER BY m.data;
 END;
 $$ LANGUAGE plpgsql;

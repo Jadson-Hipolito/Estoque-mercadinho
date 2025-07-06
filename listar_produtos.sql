@@ -21,6 +21,7 @@ BEGIN
         f.nome AS Fornecedor,
         f.contato
     FROM Produtos p
-    LEFT JOIN Fornecedores f ON p.fornecedor_id = f.id;
+    LEFT JOIN Fornecedores f ON p.fornecedor_id = f.id
+    ORDER BY p.id;
 END;
 $$;

@@ -12,6 +12,7 @@ BEGIN
         f.nome,
         f.contato,
         f.historico
-    FROM Fornecedores f;
+    FROM Fornecedores f
+    ORDER BY f.id;
 END;
 $$ LANGUAGE plpgsql;

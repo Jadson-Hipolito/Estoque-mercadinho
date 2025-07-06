@@ -12,11 +12,12 @@ BEGIN
     RETURN QUERY
     SELECT 
         v.data,
-        p.nome AS produto,
+        p.nome::TEXT AS produto,  -- Cast necessário aqui
         v.quantidade,
         v.valor_total
     FROM vendas v
     JOIN produtos p ON v.produto_id = p.id
-    WHERE v.data::DATE BETWEEN p_data_inicio AND p_data_fim;
+    WHERE v.data::DATE BETWEEN p_data_inicio AND p_data_fim
+    ORDER BY v.data;
 END;
 $$ LANGUAGE plpgsql;
